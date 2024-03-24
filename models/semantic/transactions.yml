@@ -1,0 +1,22 @@
+semantic_models:
+  - name: transactions
+    description: |
+      Model containing all transactions data. The grain of the table is the transaction_id.
+    model: ref('fct_transactions')
+
+    entities:
+      - name: transaction_id
+        type: primary
+    
+    dimensions:
+      - name: transaction_date
+        expr: date_trunc('day', transaction_date)
+        type: time
+        type_params:
+          time_granularity: day
+    
+    measures:
+      - name: transaction_amount
+        description: The total amount paid or received for each transaction.
+        agg_time_dimension: transaction_date
+        agg: sum

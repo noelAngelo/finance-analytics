@@ -1,0 +1,9 @@
+version: '2'
+
+models:
+  - name: base_up__transactions
+    description: 'This model is a base model for the raw_up_transactions table.'
+    
+  - name: base_up__accounts
+    description: 'This model is a base model for the raw_up_accounts table.'
+    

@@ -1,0 +1,62 @@
+version: 2
+
+sources:
+  - name: main
+    freshness: # default freshness
+      warn_after: {count: 12, period: hour}
+      error_after: {count: 24, period: hour}
+    loaded_at_field: _loaded_timestamp
+    tables:
+      - name: raw_up_accounts
+        columns:
+          - name: type
+            data_type: varchar
+          - name: id
+            data_type: varchar
+          - name: attributes
+            data_type: varchar
+          - name: relationships
+            data_type: varchar
+          - name: links
+            data_type: varchar
+          - name: _loaded_timestamp
+            data_type: timestamp
+        meta:
+          dagster:
+            asset_key: ["raw", "raw_up_accounts"] # This metadata specifies the corresponding Dagster asset for this dbt source.
+
+      - name: raw_up_categories
+        columns:
+          - name: type
+            data_type: varchar
+          - name: id
+            data_type: varchar
+          - name: attributes
+            data_type: varchar
+          - name: relationships
+            data_type: varchar
+          - name: links
+            data_type: varchar
+          - name: _loaded_timestamp
+            data_type: timestamp
+        meta:
+          dagster:
+            asset_key: ["raw", "raw_up_categories"] # This metadata specifies the corresponding Dagster asset for this dbt source.
+
+      - name: raw_up_transactions
+        columns:
+          - name: type
+            data_type: varchar
+          - name: id
+            data_type: varchar
+          - name: attributes
+            data_type: varchar
+          - name: relationships
+            data_type: varchar
+          - name: links
+            data_type: varchar
+          - name: _loaded_timestamp
+            data_type: timestamp
+        meta:
+          dagster:
+            asset_key: ["raw" ,"raw_up_transactions"] # This metadata specifies the corresponding Dagster asset for this dbt source.
