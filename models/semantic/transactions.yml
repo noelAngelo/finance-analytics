@@ -1,7 +1,7 @@
 semantic_models:
-  - name: transactions
+  - name: monthly_transactions_summary
     description: |
-      Model containing all transactions data. The grain of the table is the transaction_id.
+      This model aggregates the total amount of transactions for each month.
     model: ref('fct_transactions')
 
     entities:
@@ -10,13 +10,25 @@ semantic_models:
     
     dimensions:
       - name: transaction_date
-        expr: date_trunc('day', transaction_date)
+        expr: date_trunc('month', transaction_date)
         type: time
         type_params:
-          time_granularity: day
+          time_granularity: month
     
     measures:
-      - name: transaction_amount
-        description: The total amount paid or received for each transaction.
+      - name: total_income
+        description: The total amount of income transactions
         agg_time_dimension: transaction_date
         agg: sum
+        expr: CASE WHEN transaction_amount > 0 then transaction_amount else 0 end
+      - name: total_expenses
+        description: The total amount of expense transactions
+        agg_time_dimension: transaction_date
+        agg: sum
+        expr: CASE WHEN transaction_amount < 0 then transaction_amount else 0 end
+      - name: total_transactions
+        description: The total number of transactions
+        agg_time_dimension: transaction_date
+        agg: count
+        expr: transaction_id
+      

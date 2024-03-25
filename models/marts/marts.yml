@@ -1,0 +1,24 @@
+models:
+  - name: fct_transactions
+    config:
+      materialization: view
+      sort: transaction_date
+      dist: transaction_id
+    columns:
+      - name: transaction_id
+        tests:
+          - unique
+  - name: dim_categories
+    config:
+      materialization: view
+    columns:
+      - name: id
+        tests:
+          - unique
+  - name: dim_accounts
+    config:
+      materialization: view
+    columns:
+      - name: account_id
+        tests:
+          - unique

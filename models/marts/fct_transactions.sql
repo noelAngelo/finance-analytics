@@ -17,14 +17,14 @@ with up as (
 
 select 
     u.transaction_id,
-    d.date_day as transaction_date,
+    u.created_at_date as transaction_date,
     u.account_id,
     c.id as category_id,
     u.transaction_amount,
     u.transaction_type,
     u.transfer_to_account_id,
-    u.transaction_description
+    u.transaction_description,
+    a.account_bank
 from up u
-left join {{ ref('dim_date') }} d on u.created_at_date = d.date_day
 left join {{ ref('dim_accounts') }} a on u.account_id = a.account_id
 left join {{ ref('dim_categories') }} c on u.category_id = c.id

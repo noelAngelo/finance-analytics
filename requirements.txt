@@ -1,3 +1,2 @@
 dbt-duckdb
-dbt-metabase
 dbt-metricflow

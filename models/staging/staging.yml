@@ -1,0 +1,17 @@
+models:
+  - name: stg_up__transactions
+    columns:
+      - name: transaction_id
+        tests:
+          - unique
+  - name: stg_up__accounts
+    columns:
+      - name: account_id
+        tests:
+          - unique
+  - name: stg_up__categories
+    columns:
+      - name: category_id
+        tests:
+          - unique
+      

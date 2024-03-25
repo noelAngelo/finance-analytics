@@ -1,7 +1,7 @@
 metrics:
-  - name: net_income
-    description: Sum of the transaction total.
-    label: Net Income
+  - name: total_income
+    description: The total amount of income transactions
+    label: Total Income
     type: simple
     type_params:
-      measure: transaction_amount
+      measure: total_income
