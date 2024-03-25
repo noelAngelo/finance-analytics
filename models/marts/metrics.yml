@@ -12,3 +12,13 @@ metrics:
     type: simple
     type_params:
       measure: total_expenses
+  
+  - name: net_income
+    description: The net income
+    label: Net Income
+    type: derived
+    type_params:
+      expr: total_income + total_expenses
+      metrics:
+        - name: total_income
+        - name: total_expenses
