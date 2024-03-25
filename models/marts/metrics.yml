@@ -5,3 +5,10 @@ metrics:
     type: simple
     type_params:
       measure: total_income
+  
+  - name: total_expenses
+    description: The total amount of expense transactions
+    label: Total Expenses
+    type: simple
+    type_params:
+      measure: total_expenses

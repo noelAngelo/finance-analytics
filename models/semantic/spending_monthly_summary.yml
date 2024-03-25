@@ -1,12 +1,15 @@
 semantic_models:
-  - name: monthly_transactions_summary
+  - name: monthly_transactions_summary_on_spending_account
     description: |
-      This model aggregates the total amount of transactions for each month.
+      This model aggregates the total amount of transactions for each month for my spending account.
     model: ref('fct_transactions')
 
     entities:
       - name: transaction_id
         type: primary
+      - name: account_id
+        type: foreign
+        expr: account_id
     
     dimensions:
       - name: transaction_date
